@@ -28,7 +28,7 @@ class StreamExamplesTest {
         Map<Integer, List<String>> grouped = GroupByLengthExample.groupByLength(words);
 
         assertEquals(List.of("go"), grouped.get(2));
-        assertEquals(List.of("java", "stream"), grouped.get(4));
+        assertEquals(List.of("java"), grouped.get(4));
         assertEquals(List.of("stream"), grouped.get(6));
     }
 
