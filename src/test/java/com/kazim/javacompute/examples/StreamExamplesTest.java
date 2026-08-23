@@ -68,8 +68,8 @@ class StreamExamplesTest {
     }
 
     @Test
-    void firstNonRepeatingCharactersAreReturned() {
-        assertEquals(List.of('w'), GroupByLengthExample.firstNonRepeatingCharacters("swiss"));
+    void nonRepeatingCharactersAreReturned() {
+        assertEquals(List.of('w', 'i'), GroupByLengthExample.firstNonRepeatingCharacters("swiss"));
     }
 
     private static boolean containsPair(List<int[]> pairs, int first, int second) {
