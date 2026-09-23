@@ -1,7 +1,7 @@
 # Java Compute
 
 [![CI](https://github.com/kazimdafedar/java-compute/actions/workflows/ci.yml/badge.svg)](https://github.com/kazimdafedar/java-compute/actions/workflows/ci.yml)
-[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
+[![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://openjdk.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A hands-on Java portfolio project focused on **Streams API**, **Collectors**, and **functional interfaces** (`Predicate`, `Supplier`). Each example is runnable, unit-tested, and written for clarity — useful for interview prep and day-to-day data processing.
@@ -36,7 +36,7 @@ src/test/java/         # JUnit 5 tests
 
 ## Getting started
 
-**Requirements:** JDK 17+, Maven 3.9+
+**Requirements:** JDK 25+, Maven 3.9+
 
 ```bash
 git clone https://github.com/kazimdafedar/java-compute.git
