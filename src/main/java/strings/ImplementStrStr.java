@@ -1,0 +1,53 @@
+package strings;
+
+/**
+ * File 04 — Q384: Implement strStr() (KMP)
+ * O(n + m) time, O(m) space.
+ */
+class ImplementStrStr {
+
+    static int strStr(String haystack, String needle) {
+        if (needle.isEmpty()) {
+            return 0;
+        }
+        int[] lps = buildLps(needle);
+        int i = 0;
+        int j = 0;
+        while (i < haystack.length()) {
+            if (haystack.charAt(i) == needle.charAt(j)) {
+                i++;
+                j++;
+                if (j == needle.length()) {
+                    return i - j;
+                }
+            } else if (j > 0) {
+                j = lps[j - 1];
+            } else {
+                i++;
+            }
+        }
+        return -1;
+    }
+
+    static int[] buildLps(String pattern) {
+        int[] lps = new int[pattern.length()];
+        int len = 0;
+        int i = 1;
+        while (i < pattern.length()) {
+            if (pattern.charAt(i) == pattern.charAt(len)) {
+                lps[i++] = ++len;
+            } else if (len > 0) {
+                len = lps[len - 1];
+            } else {
+                lps[i++] = 0;
+            }
+        }
+        return lps;
+    }
+
+    void main() {
+        IO.println(strStr("sadbutsad", "sad"));    // 0
+        IO.println(strStr("leetcode", "leeto"));   // -1
+        IO.println(strStr("hello", "ll"));         // 2
+    }
+}
