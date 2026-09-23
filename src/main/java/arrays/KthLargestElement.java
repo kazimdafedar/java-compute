@@ -1,0 +1,65 @@
+package arrays;
+
+import java.util.PriorityQueue;
+
+/**
+ * File 04 — Q356: Kth Largest Element
+ * Min-heap of size k — O(n log k) time, O(k) space.
+ */
+class KthLargestElement {
+
+    static int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int x : nums) {
+            minHeap.offer(x);
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+
+    static int quickselect(int[] nums, int k) {
+        int target = nums.length - k;
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            int pivot = partition(nums, lo, hi);
+            if (pivot == target) {
+                break;
+            }
+            if (pivot < target) {
+                lo = pivot + 1;
+            } else {
+                hi = pivot - 1;
+            }
+        }
+        return nums[target];
+    }
+
+    static int partition(int[] nums, int lo, int hi) {
+        int pivot = nums[hi];
+        int i = lo;
+        for (int j = lo; j < hi; j++) {
+            if (nums[j] < pivot) {
+                swap(nums, i, j);
+                i++;
+            }
+        }
+        swap(nums, i, hi);
+        return i;
+    }
+
+    static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    void main() {
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        IO.println(findKthLargest(nums, 2));   // 5
+        nums = new int[]{3, 2, 1, 5, 6, 4};
+        IO.println(quickselect(nums, 2));    // 5
+    }
+}
